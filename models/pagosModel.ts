@@ -17,28 +17,31 @@ const pagoSchema = new mongoose.Schema<PagoProps>(
   {
     _id: {
       type: String,
-      required: true,
+      required: [true, "Se requiere un id"],
     },
     vencimiento: {
       type: String,
-      required: true,
+      required: [true, "Se requiere un vencimiento"],
     },
     rubro: {
       type: String,
-      required: true,
+      required: [true, "Se requiere un rubro"],
     },
     sector: {
       type: String,
-      required: true,
+      required: [true, "Se requiere un sector"],
     },
     monto: {
       type: String,
-      required: true,
+      required: [true, "Se requiere un monto"],
     },
     pagado: {
       type: String,
-      required: true,
+      required: [true, "Se requiere un pagado"],
     },
+  },
+  {
+    collection: "Prueba"
   },
 );
 

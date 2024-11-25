@@ -6,7 +6,7 @@ import Pago from "@/models/pagosModel";
 
 export const createPago = async (formData: FormData) => {
   await connectToMongoDB();
-  // Extracting pago content and time from formData
+
   const id = formData.get("id");
   const vencimiento = formData.get("vencimiento");
   const rubro = formData.get("rubro");
@@ -15,7 +15,6 @@ export const createPago = async (formData: FormData) => {
   const pagado = formData.get("pagado");
 
   try {
-    // Creating a new pago using Pago model
     const newPago = await Pago.create({
       _id: id,
       vencimiento,
@@ -24,30 +23,28 @@ export const createPago = async (formData: FormData) => {
       monto,
       pagado,
     });
-    // Saving the new pago
+    console.log({ newPago })
     newPago.save();
-    // Triggering revalidation of the specified path ("/")
     revalidatePath("/");
-    // Returning the string representation of the new pago
     return { ok: newPago.toString(), error: null }
-  } catch (error) {
-    console.log(error);
-    return { ok: null, error: 'error creating pago' };
+  } catch (error: any) {
+    let message = ""
+    if (error.name === "ValidationError") {
+
+      message = JSON.stringify(Object.values(error.errors).map(value => value.message));
+      console.log({ message })
+    }
+    return { ok: null, error: JSON.stringify(message, null, 2) };
   }
 };
 
 export const deletePago = async (id: FormData) => {
-  // Extracting pago ID from formData
   const pagoId = id.get("id");
   try {
-    // Deleting the pago with the specified ID
     await Pago.deleteOne({ _id: pagoId });
-    // Triggering revalidation of the specified path ("/")
     revalidatePath("/");
-    // Returning a success message after deleting the pago
     return;
   } catch (error) {
-    // Returning an error message if pago deletion 
     if (error instanceof Error)
       return;
   }

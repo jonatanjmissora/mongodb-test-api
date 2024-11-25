@@ -10,27 +10,30 @@ export default async function PagosList() {
       return <h1>No hay pagos</h1>;
     } else {
       return (
-        <div>
-          {pagos.map((pago) => (
-            <div key={pago._id}>
-              <h3>{pago._id as string}</h3>
-              <p>{pago.vencimiento as string}</p>
-              <p>{pago.rubro as string}</p>
-              <p>{pago.sector as string}</p>
-              <p>{pago.monto as string}</p>
-              <form action={deletePago}>
-                <input
-                  hidden
-                  type="text"
-                  name="id"
-                  defaultValue={pago._id.toString()}
-                />
-                <button className="border rounded p-2 bg-red-400">
-                  delete
-                </button>
-              </form>
-            </div>
-          ))}
+        <div className="w-full">
+          <h2 className="text-3xl font-bold p-8 text-center">Lista de pagos</h2>
+          <div className="w-3/4 mx-auto">
+            {pagos.map((pago) => (
+              <div key={pago._id} className="flex justify-around gap-2 items-center border-b border-slate-400 w-full">
+                <h3>{pago._id as string}</h3>
+                <p>{pago.vencimiento as string}</p>
+                <p>{pago.rubro as string}</p>
+                <p>{pago.sector as string}</p>
+                <p>{pago.monto as string}</p>
+                <form action={deletePago}>
+                  <input
+                    hidden
+                    type="text"
+                    name="id"
+                    defaultValue={pago._id.toString()}
+                  />
+                  <button className="border rounded p-2 bg-red-400">
+                    delete
+                  </button>
+                </form>
+              </div>
+            ))}
+          </div>
         </div>
       );
     }
