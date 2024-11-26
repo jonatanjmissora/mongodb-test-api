@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from "next/cache";
-import { connectToMongoDB } from "./db";
+import { connectToMongoDB } from "./db-mongoose";
 import Pago from "@/models/pagosModel";
 
 export const createPago = async (formData: FormData) => {
@@ -32,7 +32,6 @@ export const createPago = async (formData: FormData) => {
     if (error.name === "ValidationError") {
 
       message = JSON.stringify(Object.values(error.errors).map(value => value.message));
-      console.log({ message })
     }
     return { ok: null, error: JSON.stringify(message, null, 2) };
   }

@@ -1,19 +1,22 @@
 "use client"
 
 import { createPago } from "@/lib/actions";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import SubmitBtn from "./SubmitBtn";
 
 export function Form() {
 
   const ref = useRef<HTMLFormElement>(null);
+  const [error, setError] = useState<string>("")
 
   return (
     <form className="flex flex-col"
       ref={ref}
       action={async (FormData) => {
+        setError("")
         ref.current?.reset();
-        await createPago(FormData);
+        const res = await createPago(FormData);
+        if(res.error) setError(res.error)
       }}
     >
 
@@ -48,6 +51,8 @@ export function Form() {
         pagado
       </label>
       <input type="text" name="pagado" className=" w-62 h-10 p-2" />
+
+      {error && <p className="text-sm text-red-700 w-1/2">error: {error}</p>}
 
       <SubmitBtn />
 

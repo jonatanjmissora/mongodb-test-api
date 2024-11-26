@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { connectToMongoDB } from "@/lib/db";
+import { connectToMongoDB } from "@/lib/db-mongoose";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
