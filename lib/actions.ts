@@ -1,11 +1,11 @@
 'use server';
 
 import { revalidatePath } from "next/cache";
-import { connectToMongoDB } from "./db-mongoose";
+import { connectToMongoDBMongoose } from "./db-mongoose";
 import Pago from "@/models/pagosModel";
 
 export const createPago = async (formData: FormData) => {
-  await connectToMongoDB();
+  await connectToMongoDBMongoose();
 
   const id = formData.get("id");
   const vencimiento = formData.get("vencimiento");
