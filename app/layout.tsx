@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { connectToMongoDB } from "@/lib/db-mongoose";
+import { connectToMongoDBMongoose } from "@/lib/db-mongoose";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  connectToMongoDB()
+  connectToMongoDBMongoose()
 
   return (
     <html lang="en">

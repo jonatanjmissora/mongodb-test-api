@@ -10,7 +10,7 @@ export default async function PagosList() {
       return <h1>No hay pagos</h1>;
     } else {
       return (
-        <div className="w-full">
+        <div className="w-full bg-zinc-300 p-4">
           <h2 className="text-3xl font-bold p-8 text-center">Lista de pagos</h2>
           <div className="w-3/4 mx-auto">
             {pagos.map((pago) => (
