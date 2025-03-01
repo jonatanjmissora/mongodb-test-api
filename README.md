@@ -1,6 +1,5 @@
 
 # Info: 
-========
 probamos la creacion de un pago en la base de datos
 
 >proyecto: ragazzi-calendario
