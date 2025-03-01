@@ -1,5 +1,6 @@
 import { deletePago } from "@/lib/actions";
 import Pago from "@/models/pagosModel";
+import TrashSVG from "@/public/Trash";
 import React from "react";
 
 export default async function PagosList() {
@@ -10,7 +11,7 @@ export default async function PagosList() {
       return <h1>No hay pagos</h1>;
     } else {
       return (
-        <div className="w-full bg-zinc-300 p-4">
+        <div className="w-[90%] mx-auto bg-zinc-300 p-4">
           <h2 className="text-3xl font-bold p-8 text-center">Lista de pagos</h2>
           <div className="w-3/4 mx-auto">
             {pagos.map((pago) => (
@@ -28,7 +29,7 @@ export default async function PagosList() {
                     defaultValue={pago._id.toString()}
                   />
                   <button className="border rounded p-2 bg-red-400">
-                    delete
+                    <TrashSVG />
                   </button>
                 </form>
               </div>

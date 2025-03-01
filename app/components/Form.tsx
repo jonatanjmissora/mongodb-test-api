@@ -25,32 +25,32 @@ export function Form() {
       <label htmlFor="id" className="py-2">
         _id
       </label>
-      <input type="text" name="id" className="mb-2  w-62 h-10 p-2" />
+      <input type="text" name="id" className="mb-2  w-62 h-10 p-2" placeholder="id"/>
 
       <label htmlFor="vencimiento" className="py-2">
         vencimiento
       </label>
-      <input type="text" name="vencimiento" className=" w-62 h-10 p-2" />
+      <input type="text" name="vencimiento" className=" w-62 h-10 p-2" placeholder="vencimiento"/>
 
       <label htmlFor="rubro" className="py-2">
         rubro
       </label>
-      <input type="text" name="rubro" className=" w-62 h-10 p-2" />
+      <input type="text" name="rubro" className=" w-62 h-10 p-2" placeholder="rubro"/>
 
       <label htmlFor="sector" className="py-2">
         sector
       </label>
-      <input type="text" name="sector" className=" w-62 h-10 p-2" />
+      <input type="text" name="sector" className=" w-62 h-10 p-2" placeholder="sector"/>
 
       <label htmlFor="monto" className="py-2">
         monto
       </label>
-      <input type="text" name="monto" className=" w-62 h-10 p-2" />
+      <input type="text" name="monto" className=" w-62 h-10 p-2" placeholder="monto"/>
 
       <label htmlFor="pagado" className="py-2">
         pagado
       </label>
-      <input type="text" name="pagado" className=" w-62 h-10 p-2" />
+      <input type="text" name="pagado" className=" w-62 h-10 p-2" placeholder="pagado"/>
 
       {error && <p className="text-sm text-red-700 w-1/2">error: {error}</p>}
 
